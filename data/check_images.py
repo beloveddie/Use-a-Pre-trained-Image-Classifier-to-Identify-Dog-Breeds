@@ -114,6 +114,9 @@ def main():
     # Prints summary results, incorrect classifications of dogs (if requested)
     # and incorrectly classified breeds (if requested)
     print_results(results, results_stats, None, True, True)
+
+    ## Replace sleep(75) below with code you want to time (test)
+    sleep(75)
     
     # TODO 0: Measure total program runtime by collecting end time
     end_time = time()
