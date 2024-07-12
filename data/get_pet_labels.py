@@ -48,25 +48,30 @@ def get_pet_labels(image_dir):
 
     # Create list of files in a directory
     filenames = listdir(image_dir)
-    # print(filenames)
+
+    # Create formatted filenames
+    formatted_filenames = [file_name.lower().split("_") for file_name in filenames]
+
+    # we have a list of lists
+    pet_labels = []
+    for formatted_filename in formatted_filenames:
+      # we can just pop out the last item seeing that it will always be something like "04465.jpg"
+      formatted_filename.pop()
+      # for pet_label by combining the words in formatted_filename
+      pet_label = ""
+      for word in formatted_filename:
+        pet_label += word + " "
+      
+      pet_labels.append(pet_label.strip())
 
     # Process each of the files to create a dictionary where the key is the filename
     # and the value is the picture label
     for idx in range(0, len(filenames), 1):
       if filenames[idx] not in result_dict:
-        word_list_filename  = filenames[idx].lower().split("_")
-        pet_name = ""
-        for word in word_list_filename:
-          if word.isalpha():
-            pet_name += word + " "
-        # Strip off starting/trailing whitespace characters
-        pet_name = pet_name.strip()
-        result_dict[filenames[idx]] = pet_name
+        result_dict[filenames[idx]] = pet_labels[idx]
       else:
         print(" ** Warning: Key=", filenames[idx],
               "already exists in results_dict with value =",
               result_dict[filenames[idx]])
-
-
-
+              
     return result_dict
