@@ -48,12 +48,12 @@ def get_pet_labels(image_dir):
 
     # Create list of files in a directory
     filenames = listdir(image_dir)
-    print(filenames)
+    # print(filenames)
 
     # Process each of the files to create a dictionary where the key is the filename
     # and the value is the picture label
     for idx in range(0, len(filenames), 1):
-      if filenames[idx] not in results_dict:
+      if filenames[idx] not in result_dict:
         word_list_filename  = filenames[idx].lower().split("_")
         pet_name = ""
         for word in word_list_filename:
@@ -69,4 +69,4 @@ def get_pet_labels(image_dir):
 
 
 
-    return None
+    return result_dict
