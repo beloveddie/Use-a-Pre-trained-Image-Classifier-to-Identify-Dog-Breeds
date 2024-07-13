@@ -68,7 +68,7 @@ def get_pet_labels(image_dir):
     # and the value is the picture label
     for idx in range(0, len(filenames), 1):
       if filenames[idx] not in result_dict:
-        result_dict[filenames[idx]] = pet_labels[idx]
+        result_dict[filenames[idx]] = [pet_labels[idx]]
       else:
         print(" ** Warning: Key=", filenames[idx],
               "already exists in results_dict with value =",
